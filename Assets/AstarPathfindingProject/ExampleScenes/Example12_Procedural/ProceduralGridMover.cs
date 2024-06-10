@@ -43,7 +43,7 @@ namespace Pathfinding {
 		///
 		/// Version: The unit was changed to nodes instead of world units in 3.6.8.
 		/// </summary>
-		public float updateDistance = 10;
+		public float updateDistance = 3;
 
 		/// <summary>Graph will be moved to follow this target</summary>
 		public Transform target;

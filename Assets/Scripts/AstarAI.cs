@@ -10,17 +10,18 @@ public class AstarAI : MonoBehaviour
     private Vector3 targetPosition;
     private Seeker seeker;
     public Path path;
-    public float speed = 100.0f;
+    public float speed = 5.0f;
     public float turnSpeed = 5f;
     public float nextWaypointDistance = 3;
     private int currentWaypoint = 0;
     void Start()
     {
-        seeker = GetComponent<Seeker>();
-        seeker.pathCallback += OnPathComplete;
+        
     }
     void FixedUpdate()
     {
+        seeker = GetComponent<Seeker>();
+        seeker.pathCallback += OnPathComplete;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.2f);
         bool peopleNearby = false;
         foreach (var hitCollider in hitColliders)
@@ -55,7 +56,7 @@ public class AstarAI : MonoBehaviour
         // 当前搜索点编号大于等于路径存储的总点数时，路径搜索结束
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            Debug.Log("路径搜索结束");
+     //       Debug.Log("路径搜索结束");
             return;
         }
         Vector3 dir = (path.vectorPath[currentWaypoint + 1] - transform.position);//.normalized;
@@ -77,7 +78,7 @@ public class AstarAI : MonoBehaviour
     /// <param name="p"></param>
     private void OnPathComplete(Path p)
     {
-        Debug.Log("发现这个路线" + p.error);
+       // Debug.Log("发现这个路线" + p.error);
         if (!p.error)
         {
             path = p;
