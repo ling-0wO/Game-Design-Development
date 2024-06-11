@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class Evacuation : MonoBehaviour
 {
-    public float maxVelocity; // ×î´óËÙ¶È
-    public float desiredVelocity; // ÆÚÍûËÙ¶È
-    public float panicCoefficient; // ¿Ö»ÅÏµÊı
-    public float relaxationTime; // ËÉ³ÚÊ±¼ä
-    public LayerMask pedestrianLayer; // ĞĞÈË²ã
-    public LayerMask obstacleLayer; // ÕÏ°­Îï²ã
-    public LayerMask dangerSourceLayer; // Î£ÏÕÔ´²ã
-    private Vector3 currentVelocity; // µ±Ç°ËÙ¶È
-    public Vector3 desiredDirection ; // ÆÚÍû·½Ïò
+    public float maxVelocity;
+    public float desiredVelocity;
+    public float panicCoefficient;
+    public float relaxationTime;
+    public LayerMask pedestrianLayer;
+    public LayerMask obstacleLayer;
+    public LayerMask dangerSourceLayer;
+    private Vector3 currentVelocity;
+    public Vector3 desiredDirection;
+    public AstarAI AstarAI;
+    private int change = 0;
+    // æ–°å¢ç”¨äºè¿½è¸ªéšœç¢ç‰©çŠ¶æ€çš„å­—å…¸
+    private Dictionary<Collider, Vector3> previousObstaclePositions = new Dictionary<Collider, Vector3>();
+    private Dictionary<Collider, float> obstacleNoMovementTime = new Dictionary<Collider, float>();
 
     void Start()
     {
-        // ³õÊ¼»¯²ÎÊı
         currentVelocity = Vector3.zero;
         desiredDirection = CalculateDangerForce().normalized;
     }
 
     void Update()
     {
-        // ¼ÆËã×ÔÇıÁ¦ºÍÅÅ³âÁ¦
         Vector3 selfDrivenForce = CalculateSelfDrivenForce();
         Vector3 repulsiveForce = CalculateRepulsiveForce();
-        // ¸üĞÂËÙ¶È
+        if (change == 1 )
+        {
+            AstarAI.enabled = true;
+            this.enabled = false;
+        }
         currentVelocity += (selfDrivenForce + repulsiveForce) * Time.deltaTime;
-        Debug.Log(currentVelocity.magnitude);
-        // Èç¹ûµ±Ç°ËÙ¶È´óÓÚ×î´óËÙ¶È£¬±£Áô·½Ïò£¬µ«´óĞ¡¸ÄÎª×î´óËÙ¶È
+
         if (currentVelocity.magnitude > maxVelocity)
         {
             currentVelocity = currentVelocity.normalized * maxVelocity;
         }
         currentVelocity.y = 0;
-        // ¸üĞÂÎ»ÖÃ
+
         transform.position += currentVelocity * Time.deltaTime;
     }
- 
+
     Vector3 CalculateSelfDrivenForce()
     {
-        // ¼ÆËãÆÚÍûËÙ¶È
         Vector3 desiredVelocityVector = desiredVelocity * desiredDirection * 0.8f;
-
-        // ¼ÆËãÎ£ÏÕÔ´µÄÓ°Ïì
         Vector3 dangerForce = CalculateDangerForce();
-
-        // ¼ÆËã×ÔÇıÁ¦£¬°üÀ¨Î£ÏÕÔ´µÄÓ°Ïì
-        Vector3 selfDrivenForce =  (desiredVelocityVector + dangerForce - currentVelocity) / relaxationTime;
+        Vector3 selfDrivenForce = (desiredVelocityVector + dangerForce - currentVelocity) / relaxationTime;
 
         return selfDrivenForce;
     }
@@ -57,48 +58,66 @@ public class Evacuation : MonoBehaviour
     {
         Vector3 repulsiveForce = Vector3.zero;
 
-        // »ñÈ¡µ±Ç°ĞĞÈËÖÜÎ§µÄËùÓĞĞĞÈË
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, pedestrianLayer);
         foreach (var hitCollider in hitColliders)
         {
-            // ÅÅ³ıÖ÷½Ç×Ô¼º
             if (hitCollider.gameObject != gameObject)
             {
-                // ¼ÆËãÓëÆäËûĞĞÈËµÄÅÅ³âÁ¦
                 Vector3 direction = (transform.position - hitCollider.transform.position).normalized;
                 float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-                repulsiveForce += direction / (distance * distance); // ÅÅ³âÁ¦Óë¾àÀëµÄÆ½·½³É·´±È
+                repulsiveForce += direction / (distance * distance);
             }
         }
 
-        // ¼ÆËãÓëÕÏ°­ÎïµÄÅÅ³âÁ¦
-
-        Collider[] obstacles = Physics.OverlapSphere(transform.position, 5f, obstacleLayer);
+        Collider[] obstacles = Physics.OverlapSphere(transform.position, 1f, obstacleLayer);
         foreach (var obstacle in obstacles)
         {
             Vector3 direction = (transform.position - obstacle.transform.position).normalized;
             float distance = Vector3.Distance(transform.position, obstacle.transform.position);
-            repulsiveForce += direction / (Mathf.Pow(distance,10)); // ÅÅ³âÁ¦Óë¾àÀëµÄÆ½·½³É·´±È
+            distance = distance > 1 ? distance - 0.8f : 0.01f;
+            repulsiveForce += direction / Mathf.Pow(distance, 10);
 
+            // æ£€æŸ¥éšœç¢ç‰©æ˜¯å¦ç§»åŠ¨
+            if (previousObstaclePositions.ContainsKey(obstacle))
+            {
+                if (previousObstaclePositions[obstacle] == obstacle.transform.position)
+                {
+                    // éšœç¢ç‰©ä½ç½®æœªæ”¹å˜ï¼Œå¢åŠ è®¡æ—¶
+                    obstacleNoMovementTime[obstacle] += Time.deltaTime;
+                    if (obstacleNoMovementTime[obstacle] >= 2.0f)
+                    {
+                        change = 1;
+                        Debug.Log("1");
+                        obstacleNoMovementTime[obstacle] = 0; // é‡æ–°è®¡æ—¶
+                    }
+                }
+                else
+                {
+                    // éšœç¢ç‰©ä½ç½®æ”¹å˜ï¼Œé‡ç½®è®¡æ—¶
+                    obstacleNoMovementTime[obstacle] = 0;
+                }
+            }
+            else
+            {
+                // åˆæ¬¡è®°å½•éšœç¢ç‰©ä½ç½®
+                obstacleNoMovementTime[obstacle] = 0;
+            }
+
+            // æ›´æ–°è®°å½•çš„éšœç¢ç‰©ä½ç½®
+            previousObstaclePositions[obstacle] = obstacle.transform.position;
         }
+
         return repulsiveForce;
     }
-
-
 
     public Vector3 CalculateDangerForce()
     {
         Vector3 dangerForce = Vector3.zero;
 
-        // »ñÈ¡µ±Ç°ĞĞÈËÖÜÎ§µÄËùÓĞÎ£ÏÕÔ´
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100f, dangerSourceLayer);
         foreach (var hitCollider in hitColliders)
         {
-            // ¼ÆËãÓëÎ£ÏÕÔ´µÄ¾àÀë
             float distanceToDanger = Vector3.Distance(transform.position, hitCollider.transform.position);
-
-            // ¼ÆËãÎ£ÏÕÔ´µÄÓ°Ïì£¨ÅÅ³âÁ¦£©
-            // ÕâÀïÎÒÃÇ¼ÙÉè¿Ö»ÅÏµÊıpanicCoefficient´ú±íÁË¹«Ê½ÖĞµÄA²ÎÊı£¬ËÉ³ÚÊ±¼ärelaxationTime´ú±íÁË¹«Ê½ÖĞµÄB²ÎÊı
             float forceMagnitude = panicCoefficient * Mathf.Exp((1 - distanceToDanger) / relaxationTime);
             Vector3 direction = (transform.position - hitCollider.transform.position).normalized;
             dangerForce += direction * forceMagnitude;
@@ -106,6 +125,4 @@ public class Evacuation : MonoBehaviour
 
         return dangerForce;
     }
-
-
 }
