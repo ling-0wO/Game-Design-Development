@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using System;
+using DefaultNamespace;
 
 public class AstarAI : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class AstarAI : MonoBehaviour
     private Vector3 targetPosition;
     private Seeker seeker;
     public Path path;
-    public float speed = 5.0f;
+    public float speed = 3.0f;
     public float turnSpeed = 5f;
     public float nextWaypointDistance = 3;
     private int currentWaypoint = 0;
+    private HumanController humanController;
     void Start()
     {
-        
+        humanController = GetComponent<HumanController>();
     }
     void FixedUpdate()
     {
@@ -45,7 +47,7 @@ public class AstarAI : MonoBehaviour
         }
         else
         {
-            speed = 5.0f;
+            speed = 3.0f;
         }
         targetPosition = targetObject.transform.position;
         seeker.StartPath(transform.position, targetPosition);
@@ -59,12 +61,16 @@ public class AstarAI : MonoBehaviour
      //       Debug.Log("路径搜索结束");
             return;
         }
-        Vector3 dir = (path.vectorPath[currentWaypoint + 1] - transform.position);//.normalized;
+        /*Vector3 dir = (path.vectorPath[currentWaypoint + 1] - transform.position);//.normalized;
         dir *= speed * Time.fixedDeltaTime;
+        dir = new Vector3(dir.x, dir.y, 0);*/
         // 玩家转向
-        transform.Translate(Vector3.forward * Time.fixedDeltaTime * speed);
-        Quaternion targetRotation = Quaternion.LookRotation(dir);
+        /*transform.Translate(Vector3.forward * Time.fixedDeltaTime * speed);
+        Quaternion targetRotation = Quaternion.LookRotation(dir, new Vector3(0, 0, 1));
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
+        Debug.Log(dir);*/
+        humanController.SetVelocity(speed);
+        humanController.SetFacingPosition(path.vectorPath[currentWaypoint + 1]);
         // 玩家当前位置与当前的航向点距离小于一个给定值后，转向下一个航向点
         if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
         {
