@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b163018-62e4-46c6-9658-308970373352" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanStateMachine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanStateMachine.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/unitychan.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/unitychan.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Props/hedge prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Props/hedge prefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AstarAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AstarAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-chan!/Unity-chan! Model/Prefabs/unitychan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-chan!/Unity-chan! Model/Prefabs/unitychan.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
@@ -109,7 +103,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718091820870</updated>
-      <workItem from="1718091824439" duration="7417000" />
+      <workItem from="1718091824439" duration="11524000" />
     </task>
     <servers />
   </component>

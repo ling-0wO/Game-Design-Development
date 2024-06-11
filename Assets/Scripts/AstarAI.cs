@@ -16,14 +16,25 @@ public class AstarAI : MonoBehaviour
     public float nextWaypointDistance = 3;
     private int currentWaypoint = 0;
     private HumanController humanController;
+    private Vector3 lastPos;
+    private float unmoveTimer;
+    private float maxUnmoveTime = 2;
     void Start()
     {
+        lastPos = transform.position;
+        seeker = GetComponent<Seeker>();
+        seeker.pathCallback += OnPathComplete;
         humanController = GetComponent<HumanController>();
+        
+        targetPosition = targetObject.transform.position;
+        seeker.StartPath(transform.position, targetPosition);
+        if (path == null)
+        {
+            return;
+        }
     }
     void FixedUpdate()
     {
-        seeker = GetComponent<Seeker>();
-        seeker.pathCallback += OnPathComplete;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.2f);
         bool peopleNearby = false;
         foreach (var hitCollider in hitColliders)
@@ -49,12 +60,8 @@ public class AstarAI : MonoBehaviour
         {
             speed = 3.0f;
         }
-        targetPosition = targetObject.transform.position;
-        seeker.StartPath(transform.position, targetPosition);
-        if (path == null)
-        {
-            return;
-        }
+        
+        SeekWhenUnmove();
         // 当前搜索点编号大于等于路径存储的总点数时，路径搜索结束
         if (currentWaypoint >= path.vectorPath.Count)
         {
@@ -78,6 +85,26 @@ public class AstarAI : MonoBehaviour
             return;
         }
     }
+
+    private void SeekWhenUnmove()
+    {
+        Debug.Log(Vector3.Distance(transform.position, lastPos));
+        if (Vector3.Distance(transform.position, lastPos) > 1e-5)
+        {
+            unmoveTimer = 0;
+        }
+        else
+        {
+            unmoveTimer += Time.deltaTime;
+        }
+        lastPos = transform.position;
+        if (unmoveTimer > maxUnmoveTime)
+        {
+            unmoveTimer = 0;
+            seeker.StartPath(transform.position, targetPosition);
+        }
+    }
+
     /// <summary>
     /// 当寻路结束后调用这个函数
     /// </summary>
