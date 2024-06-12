@@ -121,6 +121,8 @@ public class AstarAI : MonoBehaviour
 
     private void SeekWhenUnmove()
     {
+          //Debug.Log(Vector3.Distance(transform.position, lastPos));
+        //Debug.Log(Vector3.Distance(transform.position, lastPos) > 1e-3);
         if (Vector3.Distance(transform.position, lastPos) > 1e-3)
         {
             unmoveTimer = 0;
