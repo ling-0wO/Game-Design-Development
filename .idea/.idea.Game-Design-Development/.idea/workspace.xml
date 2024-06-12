@@ -6,15 +6,62 @@
   <component name="ChangeListManager">
     <list default="true" id="4b163018-62e4-46c6-9658-308970373352" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Idle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Idle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Walk.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Walk.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/CharacterMovement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/CharacterMovement.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/fbx/Breathing Idle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/fbx/Breathing Idle.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Grass_stone_1_prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Grass_stone_1_prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Grass_stone_2_prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Grass_stone_2_prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 1 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 1 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 10 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 10 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 11 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 11 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 12 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 12 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 2 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 2 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 4 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 4 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 5 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 5 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 6 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 6 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 7 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 7 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 8 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 8 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 9 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Sideway 9 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 1 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 1 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 10 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 10 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 11 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 11 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 12 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 12 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 13 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 13 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 14 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 14 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 15 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 15 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 16 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 16 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 17 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 17 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 18 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 18 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 19 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 19 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 2 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 2 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 20 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 20 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 21 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 21 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 3 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 3 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 16M prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 16M prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 2M prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 2M prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 8M prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 8M prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 grey 2M prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 4 grey 2M prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 5 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 5 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 6 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 6 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 7 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 7 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 8 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 8 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 9 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Street 9 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/WalkWay 5 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/WalkWay 5 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/WalkWay 6 prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/WalkWay 6 prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 1 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 1 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 2 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 2 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 3 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 3 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 4 Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/Walkway 4 Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYGON city pack/Prefabs/Floor/stoneway 4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DemoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DemoScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AstarAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AstarAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Human/HumanManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMenu.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
@@ -28,7 +75,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AstarAI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../hey are you alive/Assets/Scripts/Player/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../hey are you alive/Assets/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../hey are you alive/Assets/Scripts/Player/PlayerState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../hey are you alive/Assets/Scripts/Player/PlayerStateMachine.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -107,6 +155,7 @@
       <option name="presentableId" value="Default" />
       <updated>1718091820870</updated>
       <workItem from="1718091824439" duration="15109000" />
+      <workItem from="1718186271799" duration="12163000" />
     </task>
     <servers />
   </component>

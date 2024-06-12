@@ -22,19 +22,20 @@ public class AstarAI : MonoBehaviour
     void Start()
     {
         lastPos = transform.position;
-        seeker = GetComponent<Seeker>();
-        seeker.pathCallback += OnPathComplete;
         humanController = GetComponent<HumanController>();
         
+    }
+
+    public void StartPathFinding()
+    {
+        seeker = GetComponent<Seeker>();
+        seeker.pathCallback += OnPathComplete;
         targetPosition = targetObject.transform.position;
         seeker.StartPath(transform.position, targetPosition);
-        if (path == null)
-        {
-            return;
-        }
     }
     void FixedUpdate()
     {
+        if (path == null) return;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.2f);
         bool peopleNearby = false;
         foreach (var hitCollider in hitColliders)
@@ -88,7 +89,7 @@ public class AstarAI : MonoBehaviour
 
     private void SeekWhenUnmove()
     {
-        Debug.Log(Vector3.Distance(transform.position, lastPos));
+//        Debug.Log(Vector3.Distance(transform.position, lastPos));
         if (Vector3.Distance(transform.position, lastPos) > 1e-5)
         {
             unmoveTimer = 0;
