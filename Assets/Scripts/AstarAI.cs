@@ -11,6 +11,9 @@ public class AstarAI : MonoBehaviour
     private Vector3 targetPosition;
     private Seeker seeker;
     public Path path;
+    public AstarAI Astar;
+    public Evacuation Evacuation;
+    public int dangerHappened = 0;
     public float speed = 3.0f;
     public float turnSpeed = 5f;
     public float nextWaypointDistance = 3;
@@ -35,7 +38,16 @@ public class AstarAI : MonoBehaviour
         seeker.StartPath(transform.position, targetPosition);
     }
     void FixedUpdate()
-    {        if (path == null) return;
+    {        
+        if (path == null)
+            return;
+        if (dangerHappened != 0)
+        {
+            Debug.Log("change");
+            Evacuation.enabled = true;
+            dangerHappened = 0;
+            Astar.enabled = false;
+        }
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.25f);
         bool peopleNearby = false;
         foreach (var hitCollider in hitColliders)
@@ -87,18 +99,25 @@ public class AstarAI : MonoBehaviour
                 Vector3 A = path.vectorPath[currentWaypoint];
                 Vector3 B = path.vectorPath[currentWaypoint + 1];
                 int WallFirst = 0;
-                // 计算另外两个点的坐标
-                Vector3 C = new Vector3(A.x, A.y, B.z); // 练习当中假设z值不变，如有需要调整z
-                Vector3 D = new Vector3(B.x, B.y, A.z); // 练习当中假设z值不变，如有需要调整z
-
+                // 计算另外两个夹点的坐标
+                Vector3 C = new Vector3(A.x, A.y, B.z); 
+                Vector3 D = new Vector3(B.x, B.y, A.z);
+              //  Debug.Log("C:" + C);
+            //    Debug.Log("D:" +  D);
                 // Perform raycast to check objects at new positions
-                Collider[] hitColliders1 = Physics.OverlapSphere(C, 0.2f); // using a small sphere for detection
-                Collider[] hitColliders2 = Physics.OverlapSphere(D, 0.2f);
+                Collider[] hitColliders1 = Physics.OverlapSphere(C, 0.1f); 
+             //   Collider[] hitColliders2 = Physics.OverlapSphere(D, 0.2f);
 
-                // Log the names of the objects found in new positions
+               
                 foreach (var hitCollider in hitColliders1)
                 {
-                    //  Debug.Log(hitCollider.gameObject.layer);
+                      Debug.Log("1:" + hitCollider.gameObject.layer);
+                    if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                        WallFirst = 1;
+                }
+                foreach (var hitCollider in hitColliders1)
+                {
+                      Debug.Log("2:" + hitCollider.gameObject.layer);
                     if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
                         WallFirst = 1;
                 }
