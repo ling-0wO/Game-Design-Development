@@ -18,24 +18,25 @@ public class AstarAI : MonoBehaviour
     private HumanController humanController;
     private Vector3 lastPos;
     private float unmoveTimer;
-    private float maxUnmoveTime = 2;
+    private float maxUnmoveTime = 1.5f;
+    private int stuck = 0;
     void Start()
     {
         lastPos = transform.position;
-        seeker = GetComponent<Seeker>();
-        seeker.pathCallback += OnPathComplete;
         humanController = GetComponent<HumanController>();
         
+    }
+
+    public void StartPathFinding()
+    {
+        seeker = GetComponent<Seeker>();
+        seeker.pathCallback += OnPathComplete;
         targetPosition = targetObject.transform.position;
         seeker.StartPath(transform.position, targetPosition);
-        if (path == null)
-        {
-            return;
-        }
     }
     void FixedUpdate()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.2f);
+    {        if (path == null) return;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.25f);
         bool peopleNearby = false;
         foreach (var hitCollider in hitColliders)
         {
@@ -77,19 +78,52 @@ public class AstarAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
         Debug.Log(dir);*/
         humanController.SetVelocity(speed);
-        humanController.SetFacingPosition(path.vectorPath[currentWaypoint + 1]);
+        humanController.SetFacingPosition(path.vectorPath[currentWaypoint]);
         // 玩家当前位置与当前的航向点距离小于一个给定值后，转向下一个航向点
         if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
         {
-            currentWaypoint++;
-            return;
+            if (stuck == 1)
+            {
+                Vector3 A = path.vectorPath[currentWaypoint];
+                Vector3 B = path.vectorPath[currentWaypoint + 1];
+                int WallFirst = 0;
+                // 计算另外两个点的坐标
+                Vector3 C = new Vector3(A.x, A.y, B.z); // 练习当中假设z值不变，如有需要调整z
+                Vector3 D = new Vector3(B.x, B.y, A.z); // 练习当中假设z值不变，如有需要调整z
+
+                // Perform raycast to check objects at new positions
+                Collider[] hitColliders1 = Physics.OverlapSphere(C, 0.2f); // using a small sphere for detection
+                Collider[] hitColliders2 = Physics.OverlapSphere(D, 0.2f);
+
+                // Log the names of the objects found in new positions
+                foreach (var hitCollider in hitColliders1)
+                {
+                    //  Debug.Log(hitCollider.gameObject.layer);
+                    if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                        WallFirst = 1;
+                }
+                if (WallFirst == 1)
+                {
+                    path.vectorPath[currentWaypoint] = D;
+                }
+                else path.vectorPath[currentWaypoint] = C;
+                stuck = 0;
+            }
+            else
+            {
+             //   Debug.Log(path.vectorPath[currentWaypoint]);
+              //  Debug.Log(path.vectorPath[currentWaypoint + 1]);
+                currentWaypoint++;
+                return;
+            }
         }
     }
 
     private void SeekWhenUnmove()
     {
-        Debug.Log(Vector3.Distance(transform.position, lastPos));
-        if (Vector3.Distance(transform.position, lastPos) > 1e-5)
+          //Debug.Log(Vector3.Distance(transform.position, lastPos));
+        //Debug.Log(Vector3.Distance(transform.position, lastPos) > 1e-3);
+        if (Vector3.Distance(transform.position, lastPos) > 1e-3)
         {
             unmoveTimer = 0;
         }
@@ -101,8 +135,10 @@ public class AstarAI : MonoBehaviour
         if (unmoveTimer > maxUnmoveTime)
         {
             unmoveTimer = 0;
+            stuck = 1;
             seeker.StartPath(transform.position, targetPosition);
         }
+        
     }
 
     /// <summary>
