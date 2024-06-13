@@ -8,6 +8,7 @@ public class Evacuation : MonoBehaviour
     public float desiredVelocity;
     public float panicCoefficient;
     public float relaxationTime;
+    public Evacuation Eva;
     public LayerMask pedestrianLayer;
     public LayerMask obstacleLayer;
     public LayerMask dangerSourceLayer;
@@ -15,9 +16,13 @@ public class Evacuation : MonoBehaviour
     public Vector3 desiredDirection;
     public AstarAI AstarAI;
     private int change = 0;
+
     // 新增用于追踪障碍物状态的字典
     private Dictionary<Collider, Vector3> previousObstaclePositions = new Dictionary<Collider, Vector3>();
     private Dictionary<Collider, float> obstacleNoMovementTime = new Dictionary<Collider, float>();
+
+    // 计时器
+    private float scriptRunningTime = 0f;
 
     void Start()
     {
@@ -27,13 +32,18 @@ public class Evacuation : MonoBehaviour
 
     void Update()
     {
+        // 更新计时器
+        scriptRunningTime += Time.deltaTime;
+
         Vector3 selfDrivenForce = CalculateSelfDrivenForce();
         Vector3 repulsiveForce = CalculateRepulsiveForce();
-        if (change == 1 )
+        if (change == 1)
         {
             AstarAI.enabled = true;
-            this.enabled = false;
+            change = 0;
+            Eva.enabled = false;
         }
+
         currentVelocity += (selfDrivenForce + repulsiveForce) * Time.deltaTime;
 
         if (currentVelocity.magnitude > maxVelocity)
@@ -43,6 +53,14 @@ public class Evacuation : MonoBehaviour
         currentVelocity.y = 0;
 
         transform.position += currentVelocity * Time.deltaTime;
+
+        // 检查计时器是否超过7秒
+        if (scriptRunningTime >= 7.0f)
+        {
+            change = 1;
+            scriptRunningTime = 0f;
+            Debug.Log("7 seconds elapsed. Changing script.");
+        }
     }
 
     Vector3 CalculateSelfDrivenForce()

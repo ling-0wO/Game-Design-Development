@@ -136,6 +136,7 @@ MonoBehaviour:
   desiredVelocity: 3
   panicCoefficient: 1000
   relaxationTime: 0.5
+  Eva: {fileID: 2432580667374517637}
   pedestrianLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -160,9 +161,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
+  Astar: {fileID: 2409112569798584455}
+  Evacuation: {fileID: 2432580667374517637}
+  dangerHappened: 0
   speed: 5
   turnSpeed: 5
-  nextWaypointDistance: 3
+  nextWaypointDistance: 1
 --- !u!114 &8155359726317144259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +228,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.22
+  m_Radius: 0.25
   m_Height: 2.43
   m_Direction: 1
   m_Center: {x: 0, y: 0.76527953, z: 0}
