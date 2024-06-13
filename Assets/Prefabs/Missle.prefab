@@ -149,4 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 100000, guid: 5d028565f79e270408884b995abc06ef, type: 3}
+  laserPrefab: {fileID: 2528056616625206715, guid: 6f6afb977c2f9a94c9c2779e37e0d1bb, type: 3}
   explosionRadius: 30
+  clickCount: 0
+  maxClickCount: 3
+  normalMaterial: {fileID: 2100000, guid: 863174fbef875425ca78e4c949f12318, type: 2}
+  flashMaterial: {fileID: 2100000, guid: cea0c4191eb5cb440aa5355d44958681, type: 2}
