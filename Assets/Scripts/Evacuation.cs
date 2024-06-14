@@ -16,7 +16,7 @@ public class Evacuation : MonoBehaviour
     public Vector3 desiredDirection;
     public AstarAI AstarAI;
     private int change = 0;
-
+    private Animator animator;
     // 新增用于追踪障碍物状态的字典
     private Dictionary<Collider, Vector3> previousObstaclePositions = new Dictionary<Collider, Vector3>();
     private Dictionary<Collider, float> obstacleNoMovementTime = new Dictionary<Collider, float>();
@@ -28,6 +28,7 @@ public class Evacuation : MonoBehaviour
     {
         currentVelocity = Vector3.zero;
         desiredDirection = CalculateDangerForce().normalized;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,6 +40,7 @@ public class Evacuation : MonoBehaviour
         Vector3 repulsiveForce = CalculateRepulsiveForce();
         if (change == 1)
         {
+            // animator 
             AstarAI.enabled = true;
             change = 0;
             Eva.enabled = false;
@@ -133,6 +135,10 @@ public class Evacuation : MonoBehaviour
         Vector3 dangerForce = Vector3.zero;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100f, dangerSourceLayer);
+        // 超过范围了，人不再害怕
+        if(hitColliders.Length == 0)
+            change = 1;
+        
         foreach (var hitCollider in hitColliders)
         {
             float distanceToDanger = Vector3.Distance(transform.position, hitCollider.transform.position);

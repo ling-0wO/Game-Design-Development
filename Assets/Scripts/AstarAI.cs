@@ -23,11 +23,12 @@ public class AstarAI : MonoBehaviour
     private float unmoveTimer;
     private float maxUnmoveTime = 1.5f;
     private int stuck = 0;
+    private Animator animator;
     void Start()
     {
         lastPos = transform.position;
         humanController = GetComponent<HumanController>();
-        
+        animator = GetComponent<Animator>();
     }
 
     public void StartPathFinding()
@@ -41,6 +42,12 @@ public class AstarAI : MonoBehaviour
     {        
         if (path == null)
             return;
+        // 判断人物当前状态
+        if(animator == null)
+        {
+            // 修改危险状态
+            dangerHappened = 1;
+        }
         if (dangerHappened != 0)
         {
             Debug.Log("change");

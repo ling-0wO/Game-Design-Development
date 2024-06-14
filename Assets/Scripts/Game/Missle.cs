@@ -67,17 +67,34 @@ public class Missile : MonoBehaviour
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
         // 检测爆炸半径内的人类物体
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius * 5);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.layer == LayerMask.NameToLayer("People"))
             {
-                // 删除人类物体
-                Destroy(hitCollider.gameObject);
+                float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
+
+                // 根据距离设置人类的状态
+                if (distance <= explosionRadius)
+                {
+                    // 删除人类物体
+                    Destroy(hitCollider.gameObject);
+                }
+                else if (distance <= explosionRadius * 2)
+                {
+                    // 设置人类的状态为 injured
+                    hitCollider.gameObject.GetComponent<Animator>().SetTrigger("Injured");
+                }
+                else if (distance <= explosionRadius * 5)
+                {
+                    // 设置人类的状态为 scared
+                    hitCollider.gameObject.GetComponent<Animator>().SetTrigger("Scared");
+                }
             }
         }
 
         // 删除导弹物体
         Destroy(gameObject);
     }
+
 }
