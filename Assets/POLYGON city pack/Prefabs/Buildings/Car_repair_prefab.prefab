@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4950470534877972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wrench prefab (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 33930861696091670}
   - component: {fileID: 23483796918136450}
   - component: {fileID: 64795370809954194}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wrench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 33609946655254684}
   - component: {fileID: 23835673164190702}
   - component: {fileID: 64270791279655906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wrench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 33345716325036670}
   - component: {fileID: 23607379949995260}
   - component: {fileID: 64310221988388290}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car_repair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4197068249736730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car_repair_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4276166557813674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wrench prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

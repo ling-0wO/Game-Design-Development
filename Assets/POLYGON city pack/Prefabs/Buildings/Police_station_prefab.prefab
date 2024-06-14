@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4665181676838408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Police_station_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 33786661987328890}
   - component: {fileID: 23085444239643342}
   - component: {fileID: 64607117731450504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Police_station
   m_TagString: Untagged
   m_Icon: {fileID: 0}

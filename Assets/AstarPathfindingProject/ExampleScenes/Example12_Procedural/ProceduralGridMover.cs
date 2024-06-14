@@ -47,9 +47,12 @@ namespace Pathfinding {
 
 		/// <summary>Graph will be moved to follow this target</summary>
 		public Transform target;
+        public Transform target1;
+        public Transform target2;
 
-		/// <summary>Grid graph to update</summary>
-		GridGraph graph;
+        public int dangerHappened = 0;
+        /// <summary>Grid graph to update</summary>
+        GridGraph graph;
 
 		/// <summary>Temporary buffer</summary>
 		GridNodeBase[] buffer;
@@ -77,11 +80,19 @@ namespace Pathfinding {
 			// Check the distance in graph space
 			// We only care about the X and Z axes since the Y axis is the "height" coordinate of the nodes (in graph space)
 			// We only care about the plane that the nodes are placed in
-			if (VectorMath.SqrDistanceXZ(graphCenterInGraphSpace, targetPositionInGraphSpace) > updateDistance*updateDistance) {
-				UpdateGraph();
+			if (dangerHappened != 0) {
+                target = target2;
+                UpdateGraph();
+                Invoke("newGraph", 1f);
+                
+				dangerHappened = 0;
 			}
 		}
-
+		void newGraph()
+		{
+			target = target1;
+			UpdateGraph();
+		}
 		/// <summary>
 		/// Transforms a point from world space to graph space.
 		/// In graph space, (0,0,0) is bottom left corner of the graph

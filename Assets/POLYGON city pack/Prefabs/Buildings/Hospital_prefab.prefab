@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4473089879916392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hospital_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 33715304622491736}
   - component: {fileID: 23018964235083092}
   - component: {fileID: 64234420388951216}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hospital
   m_TagString: Untagged
   m_Icon: {fileID: 0}

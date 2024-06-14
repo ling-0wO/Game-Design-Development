@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33418271920073916}
   - component: {fileID: 23524285103523870}
   - component: {fileID: 64962537987607460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gas_station_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4888449184639514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gas_station_A_PREFAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

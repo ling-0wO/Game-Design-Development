@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4330603509456850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ColaMachine prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 33436427560583676}
   - component: {fileID: 23764987183645404}
   - component: {fileID: 65570077839909332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ColaMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
