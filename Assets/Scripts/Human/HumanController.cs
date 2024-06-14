@@ -6,24 +6,36 @@ namespace DefaultNamespace
     {
         public Rigidbody rigidbody;
         public Animator animator;
+        private string currentState;
 
+        public void SetState(string newState)
+        {
+            animator.SetBool(currentState,false);
+            animator.SetBool(newState, true);
+            currentState = newState;
+        }
+
+        public string GetState()
+        {
+            return currentState;
+        }
         void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
             animator = GetComponent<Animator>();
+            currentState = "Idle";            
+            animator.SetBool(currentState,false);
         }
 
         public void SetVelocity(float speed)
         {
             if (speed == 0)
             {
-                animator.SetBool("Walk",false);
-                animator.SetBool("Idle", true);
+                SetState("Idle");
             }
             else
             {
-                animator.SetBool("Idle", false);
-                animator.SetBool("Walk",true);
+                SetState("Walk");
             }
             rigidbody.velocity = transform.forward * speed;
         }
