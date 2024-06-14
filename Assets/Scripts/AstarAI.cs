@@ -73,7 +73,11 @@ public class AstarAI : MonoBehaviour
         {
             speed = 3.0f;
         }
-        
+        if (Vector3.Distance(transform.position, targetObject.transform.position) < 5)
+        {
+            Debug.Log(Vector3.Distance(transform.position, targetObject.transform.position));
+            speed = 0;
+        }
         SeekWhenUnmove();
         // 当前搜索点编号大于等于路径存储的总点数时，路径搜索结束
         if (currentWaypoint >= path.vectorPath.Count)
@@ -92,7 +96,7 @@ public class AstarAI : MonoBehaviour
         humanController.SetVelocity(speed);
         humanController.SetFacingPosition(path.vectorPath[currentWaypoint]);
         // 玩家当前位置与当前的航向点距离小于一个给定值后，转向下一个航向点
-        if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
+        if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance && Vector3.Distance(transform.position, targetObject.transform.position) > 5)
         {
             if (stuck == 1)
             {
@@ -111,13 +115,13 @@ public class AstarAI : MonoBehaviour
                
                 foreach (var hitCollider in hitColliders1)
                 {
-                      Debug.Log("1:" + hitCollider.gameObject.layer);
+                    //  Debug.Log("1:" + hitCollider.gameObject.layer);
                     if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
                         WallFirst = 1;
                 }
                 foreach (var hitCollider in hitColliders1)
                 {
-                      Debug.Log("2:" + hitCollider.gameObject.layer);
+                   //   Debug.Log("2:" + hitCollider.gameObject.layer);
                     if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
                         WallFirst = 1;
                 }

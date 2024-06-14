@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4105848772479938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Supermaket_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 33004117211513152}
   - component: {fileID: 23019197907045262}
   - component: {fileID: 64300851794615108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Supermaket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
