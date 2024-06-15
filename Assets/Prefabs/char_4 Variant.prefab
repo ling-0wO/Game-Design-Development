@@ -536,6 +536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 7978080573962035635}
   animator: {fileID: 5877341916488485427}
+  avatar: {fileID: 21300000, guid: c5e3c7a4dfff3ce4e9359dd39e394957, type: 3}
+  id: 0
 --- !u!54 &7978080573962035635
 Rigidbody:
   m_ObjectHideFlags: 0

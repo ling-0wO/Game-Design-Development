@@ -557,6 +557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: -1942119078408793636}
   animator: {fileID: 8204107721267957731}
+  avatar: {fileID: 21300000, guid: 6c2721700ee485343aad3a9c6c5a0c9d, type: 3}
+  id: 0
 --- !u!136 &7608636544290565246
 CapsuleCollider:
   m_ObjectHideFlags: 0

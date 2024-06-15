@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject prefab; // 要实例化的预制体  
-    public LayerMask layerMask; // 要检测的Layer的掩码  
+    [FormerlySerializedAs("layerMask")] public LayerMask groundLayerMask;
+    public LayerMask peopleLayerMask;// 要检测的Layer的掩码  
     public float spawnTime;
     public bool canSpawn;
-    public GameObject spawnedPeopleParent;
     public int maxPeople;
     private bool isDragging = false; // 是否正在拖动  
     private float spawnTimer = 0f;
 
-    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
 
         if (canSpawn)
             SpawnPeople();
+        if (PlayerManager.instance.gameStarted && Input.GetMouseButtonDown(0))
+        {
+            ShowHumanState();
+        }
     }
 
     private void IsDragging()
@@ -59,22 +63,39 @@ public class PlayerController : MonoBehaviour
             RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
             if (hits.Length != 0)
             {
-                if (((1 << hits[0].collider.gameObject.layer) & layerMask) != 0 && HumanManager.instance.childGameObject.Count < maxPeople)
+                if (((1 << hits[0].collider.gameObject.layer) & groundLayerMask) != 0 && HumanManager.instance.childGameObject.Count < maxPeople)
                 {
+                    HumanManager.instance.SpawnPeopleInstance(hits[0].point);
                     // 在碰撞点的位置实例化物体  
-                    GameObject people = Instantiate(prefab, hits[0].point, Quaternion.identity);
-                    // 这里不需要isDragging变量，因为我们只在点击时创建物体  
-                    AstarAI ai = people.GetComponent<AstarAI>();
-                    Evacuation evacuation = people.GetComponent<Evacuation>();
-                    ai.targetObject = target;
-                    evacuation.AstarAI = ai;
-                    people.transform.SetParent(spawnedPeopleParent.transform);
-                    HumanManager.instance.childGameObject.Add(people);
+
                 }
             }
         }
     }
 
+    private void ShowHumanState()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // 从摄像机发出射线  
+
+        bool ishit = Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, peopleLayerMask);
+        RaycastHit humanhit = hit;
+        if (ishit)
+        {
+            
+            Debug.Log(humanhit.collider.gameObject.name);
+            HumanController humanController = humanhit.collider.gameObject.GetComponent<HumanController>();
+                Debug.Log(humanController);
+                if (!GameUI.instance.humanInfo.gameObject.activeSelf)
+                {
+                    GameUI.instance.humanInfo.gameObject.SetActive(true);
+                }
+
+                GameUI.instance.humanInfo.avatar.sprite = humanController.avatar;
+                GameUI.instance.humanInfo.name.text = "Human " + humanController.id;
+                GameUI.instance.humanInfo.character.text = "character: ";
+                GameUI.instance.humanInfo.action.text = "action: " + humanController.GetState();
+            }
+    }
     public void SetSpawnTime(int count)
     {
         spawnTime = (float) (1.0 / count);

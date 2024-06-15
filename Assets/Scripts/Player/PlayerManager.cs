@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-
+    public bool gameStarted;
     public PlayerController playerController;
     // Start is called before the first frame update
     void Start()
