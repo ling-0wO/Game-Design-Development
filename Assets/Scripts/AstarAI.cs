@@ -43,7 +43,7 @@ public class AstarAI : MonoBehaviour
         if (path == null)
             return;
         // 判断人物当前状态
-        string state = humanController.GetState;
+        string state = humanController.GetState();
         if (state == "Scared" || state == "Injured_Run")
         {
             // 修改危险状态

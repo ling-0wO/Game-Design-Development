@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DefaultNamespace;
 public class Evacuation : MonoBehaviour
 {
     public float maxVelocity;
@@ -40,7 +40,7 @@ public class Evacuation : MonoBehaviour
         if (change == 1)
         {
             // animator 
-            HumanController humanController = hitCollider.gameObject.GetComponent<HumanController>();
+            HumanController humanController = gameObject.GetComponent<HumanController>();
             humanController.SetState("Running");
             AstarAI.enabled = true;
             change = 0;
