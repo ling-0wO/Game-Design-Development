@@ -75,6 +75,7 @@ public class Missile : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
 
                 // 根据距离设置人类的状态
+                HumanController humanController = hitCollider.gameObject.GetComponent<HumanController>();
                 if (distance <= explosionRadius)
                 {
                     // 删除人类物体
@@ -83,18 +84,18 @@ public class Missile : MonoBehaviour
                 else if (distance <= explosionRadius * 2)
                 {
                     // 设置人类的状态为 injured
-                    hitCollider.gameObject.GetComponent<Animator>().SetTrigger("Injured");
+                    humanController.SetState("Injured_Run");
                 }
                 else if (distance <= explosionRadius * 5)
                 {
                     // 设置人类的状态为 scared
-                    hitCollider.gameObject.GetComponent<Animator>().SetTrigger("Scared");
+                    humanController.SetState("Scared");
                 }
             }
         }
-
         // 删除导弹物体
         Destroy(gameObject);
     }
+
 
 }

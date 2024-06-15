@@ -23,7 +23,6 @@ public class Evacuation : MonoBehaviour
 
     // 计时器
     private float scriptRunningTime = 0f;
-
     void Start()
     {
         currentVelocity = Vector3.zero;
@@ -41,6 +40,8 @@ public class Evacuation : MonoBehaviour
         if (change == 1)
         {
             // animator 
+            HumanController humanController = hitCollider.gameObject.GetComponent<HumanController>();
+            humanController.SetState("Running");
             AstarAI.enabled = true;
             change = 0;
             Eva.enabled = false;
@@ -137,7 +138,10 @@ public class Evacuation : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100f, dangerSourceLayer);
         // 超过范围了，人不再害怕
         if(hitColliders.Length == 0)
+        {
             change = 1;
+        }
+           
         
         foreach (var hitCollider in hitColliders)
         {
