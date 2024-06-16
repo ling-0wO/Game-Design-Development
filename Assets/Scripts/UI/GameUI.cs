@@ -4,21 +4,31 @@ using System.Text.RegularExpressions;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+    public static GameUI instance;
     public GameObject inputSpawnSpeed;
     public GameObject PauseUI;
-
+    public MissileSpawner missileSpawner;
     public TMP_InputField inputField;
+    [FormerlySerializedAs("HumanInfo")] public HumanInfo humanInfo;
 
     public bool gameStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +61,8 @@ public class GameUI : MonoBehaviour
     {
         if (!gameStarted)
         {
+            missileSpawner.SetGameBegin(true);
+            PlayerManager.instance.gameStarted = true;
             PlayerManager.instance.playerController.canSpawn = false;
             PauseUI.SetActive(false);
             // 遍历parent下的所有child  
@@ -63,6 +75,8 @@ public class GameUI : MonoBehaviour
         }
         else
         {
+            missileSpawner.SetGameBegin(false);
+            PlayerManager.instance.gameStarted = true;
             PauseUI.SetActive(true);
             foreach (var childObject in HumanManager.instance.childGameObject)
             {

@@ -6,6 +6,9 @@ namespace DefaultNamespace
     {
         public Rigidbody rigidbody;
         public Animator animator;
+        
+        public Sprite avatar;
+        public int id;
         private string currentState;
 
         public void SetState(string newState)

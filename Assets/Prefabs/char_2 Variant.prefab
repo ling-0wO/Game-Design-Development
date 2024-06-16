@@ -530,8 +530,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac24c51e159e4e1db313fb4a88adad68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  animator: {fileID: 0}
+  rigidbody: {fileID: 4679462651389068290}
+  animator: {fileID: 4784059634745558276}
+  avatar: {fileID: 21300000, guid: b38e771ab6ea80244b263cb5d9095f3a, type: 3}
+  id: 0
 --- !u!95 &4784059634745558276
 Animator:
   serializedVersion: 5
