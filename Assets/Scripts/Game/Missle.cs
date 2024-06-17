@@ -81,6 +81,7 @@ public class Missile : MonoBehaviour
                 {
                     // 删除人类物体
                     Destroy(hitCollider.gameObject);
+                    HumanManager.instance.DecreasePeopleCount(1);
                 }
                 else if (distance <= explosionRadius * 2)
                 {
