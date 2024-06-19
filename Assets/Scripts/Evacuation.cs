@@ -67,9 +67,9 @@ public class Evacuation : MonoBehaviour
         {
             // animator 
             HumanController humanController = gameObject.GetComponent<HumanController>();
-            humanController.SetState("Running");
             AstarAI.start = 1;
             AstarAI.enabled = true;
+            AstarAI.speed = 5;
             change = 0;
             Eva.enabled = false;
         }

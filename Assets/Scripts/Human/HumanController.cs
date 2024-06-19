@@ -36,10 +36,15 @@ namespace DefaultNamespace
             {
                 SetState("Idle");
             }
-            else
+            else if (speed == 5)
+            {
+                SetState("Running");
+            }
+            else if (speed == 3)
             {
                 SetState("Walk");
             }
+            
             rigidbody.velocity = transform.forward * speed;
         }
 
