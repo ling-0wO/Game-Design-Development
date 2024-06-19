@@ -37,15 +37,6 @@ public class Evacuation : MonoBehaviour
 
         Vector3 selfDrivenForce = CalculateSelfDrivenForce();
         Vector3 repulsiveForce = CalculateRepulsiveForce();
-        if (change == 1)
-        {
-            // animator 
-            HumanController humanController = gameObject.GetComponent<HumanController>();
-            humanController.SetState("Running");
-            AstarAI.enabled = true;
-            change = 0;
-            Eva.enabled = false;
-        }
 
         currentVelocity += (selfDrivenForce + repulsiveForce) * Time.deltaTime;
 
@@ -54,15 +45,33 @@ public class Evacuation : MonoBehaviour
             currentVelocity = currentVelocity.normalized * maxVelocity;
         }
         currentVelocity.y = 0;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f, obstacleLayer);
+        if (hitColliders.Length != 0)
+        {
+            HumanController humanController = gameObject.GetComponent<HumanController>();
+            currentVelocity.x = 0;
+            currentVelocity.z = 0;
+            humanController.SetState("Scared");
 
+        }
         transform.position += currentVelocity * Time.deltaTime;
 
         // 检查计时器是否超过7秒
-        if (scriptRunningTime >= 7.0f)
+        if (scriptRunningTime >= 3.0f)
         {
             change = 1;
             scriptRunningTime = 0f;
             Debug.Log("7 seconds elapsed. Changing script.");
+        }
+        if (change == 1)
+        {
+            // animator 
+            HumanController humanController = gameObject.GetComponent<HumanController>();
+            humanController.SetState("Running");
+            AstarAI.start = 1;
+            AstarAI.enabled = true;
+            change = 0;
+            Eva.enabled = false;
         }
     }
 
@@ -71,7 +80,7 @@ public class Evacuation : MonoBehaviour
         Vector3 desiredVelocityVector = desiredVelocity * desiredDirection * 0.8f;
         Vector3 dangerForce = CalculateDangerForce();
         Vector3 selfDrivenForce = (desiredVelocityVector + dangerForce - currentVelocity) / relaxationTime;
-
+      //  Debug.Log("desiredVelocityVector:" + desiredVelocityVector + ", dangerForce" + dangerForce);
         return selfDrivenForce;
     }
 
@@ -141,14 +150,23 @@ public class Evacuation : MonoBehaviour
         {
             change = 1;
         }
-           
-        
+
+
         foreach (var hitCollider in hitColliders)
         {
             float distanceToDanger = Vector3.Distance(transform.position, hitCollider.transform.position);
-            float forceMagnitude = panicCoefficient * Mathf.Exp((1 - distanceToDanger) / relaxationTime);
+
+            // 正则化 distanceToDanger 的范围到 (0, 1)
+            float normalizedDistance = distanceToDanger / 100.0f;
+
+            // 计算力的大小，使用正则化后的距离
+            float forceMagnitude = panicCoefficient * Mathf.Exp((1 - normalizedDistance) / relaxationTime);
+            // Debug.Log("panic" + panicCoefficient + ", 1-normalizedDis:" + (1 - normalizedDistance) + ", relax:" + relaxationTime);
+
             Vector3 direction = (transform.position - hitCollider.transform.position).normalized;
             dangerForce += direction * forceMagnitude;
+
+            // Debug.Log("direction:" + direction + ",forceMan:" + forceMagnitude);
         }
 
         return dangerForce;
