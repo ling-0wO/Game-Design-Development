@@ -14,6 +14,8 @@ public class GameUI : MonoBehaviour
     public GameObject PauseUI;
     public MissileSpawner missileSpawner;
     public TMP_InputField inputField;
+    public GameObject livePeople;
+    public TextMeshProUGUI livePeopleText;
     [FormerlySerializedAs("HumanInfo")] public HumanInfo humanInfo;
 
     public bool gameStarted = false;
@@ -61,6 +63,7 @@ public class GameUI : MonoBehaviour
     {
         if (!gameStarted)
         {
+            livePeople.SetActive(true);
             missileSpawner.SetGameBegin(true);
             PlayerManager.instance.gameStarted = true;
             PlayerManager.instance.playerController.canSpawn = false;
@@ -75,6 +78,7 @@ public class GameUI : MonoBehaviour
         }
         else
         {
+            livePeople.SetActive(false);
             missileSpawner.SetGameBegin(false);
             PlayerManager.instance.gameStarted = true;
             PauseUI.SetActive(true);
@@ -87,5 +91,10 @@ public class GameUI : MonoBehaviour
         }
 
         gameStarted = !gameStarted;
+    }
+
+    public void SetLivePeopleText(int livePeople, int totalPeople)
+    {
+        livePeopleText.text = "Live People Count: " + livePeople.ToString() + " / " + totalPeople.ToString();
     }
 }

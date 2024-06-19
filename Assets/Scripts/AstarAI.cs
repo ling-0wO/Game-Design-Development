@@ -16,12 +16,13 @@ public class AstarAI : MonoBehaviour
     public int dangerHappened = 0;
     public float speed = 3.0f;
     public float turnSpeed = 5f;
+    public int start = 0;
     public float nextWaypointDistance = 3;
     private int currentWaypoint = 0;
     private HumanController humanController;
     private Vector3 lastPos;
     private float unmoveTimer;
-    private float maxUnmoveTime = 1.5f;
+    private float maxUnmoveTime = 0.5f;
     private int stuck = 0;
     private Animator animator;
     void Start()
@@ -43,7 +44,18 @@ public class AstarAI : MonoBehaviour
         if (path == null)
             return;
         // 判断人物当前状态
+        if (start == 1)
+        { 
+
+            StartPathFinding();
+            humanController.SetState("Running");
+            Debug.Log(1);
+          //  Debug.Log("name:" + transform.name + ":" + humanController.GetState());
+
+            start = 0;
+        }
         string state = humanController.GetState();
+        Debug.Log("name:" + transform.name + ":" + state);
         if (state == "Scared" || state == "Injured_Run")
         {
             // 修改危险状态
@@ -75,7 +87,86 @@ public class AstarAI : MonoBehaviour
         }
         if (peopleNearby)
         {
-            speed = 0;
+            //  speed = 0;
+
+            int offset = -2;
+            while (true)
+            {
+                int Wall = 0;
+                if (path.vectorPath[currentWaypoint].x == path.vectorPath[currentWaypoint + 1].x && path.vectorPath[currentWaypoint].x == path.vectorPath[currentWaypoint + 2].x)
+                {
+                    Vector3 tmp1 = new Vector3(path.vectorPath[currentWaypoint].x + offset, path.vectorPath[currentWaypoint].y, path.vectorPath[currentWaypoint].z);
+                    Vector3 tmp2 = new Vector3(path.vectorPath[currentWaypoint + 1].x + offset, path.vectorPath[currentWaypoint].y, path.vectorPath[currentWaypoint].z);
+                    Vector3 tmp3 = new Vector3(path.vectorPath[currentWaypoint + 2].x + offset, path.vectorPath[currentWaypoint].y, path.vectorPath[currentWaypoint].z);
+                    Collider[] hitColliders1 = Physics.OverlapSphere(tmp1, 1.0f);
+                    Collider[] hitColliders2 = Physics.OverlapSphere(tmp2, 1.0f);
+                    Collider[] hitColliders3 = Physics.OverlapSphere(tmp3, 1.0f);
+                    foreach (var hitCollider in hitColliders1)
+                    {
+                        if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                            Wall = 1;
+                    }
+                    foreach (var hitCollider in hitColliders2)
+                    {
+                        if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                            Wall = 1;
+                    }
+                    foreach (var hitCollider in hitColliders3)
+                    {
+                        if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                            Wall = 1;
+                    }
+                    if (Wall == 0)
+                    {
+                        path.vectorPath[currentWaypoint] = tmp1;
+                        path.vectorPath[currentWaypoint + 1] = tmp2;
+                        // path.vectorPath[currentWaypoint + 2] = tmp3;
+
+                    }
+                }
+                else if (path.vectorPath[currentWaypoint].z == path.vectorPath[currentWaypoint + 1].z && path.vectorPath[currentWaypoint].z == path.vectorPath[currentWaypoint + 2].z)
+                {
+                    Vector3 tmp1 = new Vector3(path.vectorPath[currentWaypoint].x, path.vectorPath[currentWaypoint].y, path.vectorPath[currentWaypoint].z + offset);
+                    Vector3 tmp2 = new Vector3(path.vectorPath[currentWaypoint + 1].x, path.vectorPath[currentWaypoint].y, path.vectorPath[currentWaypoint].z + offset);
+                    Vector3 tmp3 = new Vector3(path.vectorPath[currentWaypoint + 2].x, path.vectorPath[currentWaypoint].y, path.vectorPath[currentWaypoint].z + offset);
+                    Collider[] hitColliders1 = Physics.OverlapSphere(tmp1, 1.0f);
+                    Collider[] hitColliders2 = Physics.OverlapSphere(tmp2, 1.0f);
+                    Collider[] hitColliders3 = Physics.OverlapSphere(tmp3, 1.0f);
+                    foreach (var hitCollider in hitColliders1)
+                    {
+                        if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                            Wall = 1;
+                    }
+                    foreach (var hitCollider in hitColliders2)
+                    {
+                        if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                            Wall = 1;
+                    }
+                    foreach (var hitCollider in hitColliders3)
+                    {
+                        if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                            Wall = 1;
+                    }
+                    if (Wall == 0)
+                    {
+                        path.vectorPath[currentWaypoint] = tmp1;
+                        path.vectorPath[currentWaypoint + 1] = tmp2;
+                        // path.vectorPath[currentWaypoint + 2] = tmp3;
+
+                    }
+                }
+                offset += 1;
+                if (Wall == 0)
+                {
+                    offset = -2;
+                    break;
+                }
+                if (offset == 3)
+                {
+                    offset = -2;
+                    break;
+                }
+            }
         }
         else
         {

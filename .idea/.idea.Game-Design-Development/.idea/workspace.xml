@@ -5,32 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b163018-62e4-46c6-9658-308970373352" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Design-Development/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run0.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run0.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run1.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run1.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run1.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run2.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run2.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run2.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Animation Clips/Injured_Run/Injured_Run2.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/CharacterMovement 1.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/CharacterMovement 1.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/CharacterMovement 2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/CharacterMovement 2.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/CharacterMovement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/CharacterMovement.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/fbx/Injured_Run/Injured_Run0.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/fbx/Injured_Run/Injured_Run0.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/fbx/Injured_Run/Injured_Run1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/fbx/Injured_Run/Injured_Run1.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/fbx/Injured_Run/Injured_Run2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/fbx/Injured_Run/Injured_Run2.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Missle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Missle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/char_1 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/char_1 Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/char_2 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/char_2 Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/char_3 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/char_3 Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/char_4 Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/char_4 Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DemoScene 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DemoScene 1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Human/HumanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Missle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Missle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Human/HumanManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Human/HumanManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissleSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissleSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
@@ -128,7 +105,8 @@
       <updated>1718091820870</updated>
       <workItem from="1718091824439" duration="15109000" />
       <workItem from="1718186271799" duration="12163000" />
-      <workItem from="1718450624065" duration="3540000" />
+      <workItem from="1718450624065" duration="4277000" />
+      <workItem from="1718626382280" duration="1388000" />
     </task>
     <servers />
   </component>
