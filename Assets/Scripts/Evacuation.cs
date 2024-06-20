@@ -46,13 +46,18 @@ public class Evacuation : MonoBehaviour
         }
         currentVelocity.y = 0;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f, obstacleLayer);
+        HumanController humanController = gameObject.GetComponent<HumanController>();
         if (hitColliders.Length != 0)
         {
-            HumanController humanController = gameObject.GetComponent<HumanController>();
             currentVelocity.x = 0;
             currentVelocity.z = 0;
             humanController.SetState("Scared");
 
+        }
+
+        humanController.SetFacingPosition(currentVelocity);
+        if(currentVelocity.magnitude > 0) {
+            humanController.SetState("Running");
         }
         transform.position += currentVelocity * Time.deltaTime;
 
@@ -66,7 +71,6 @@ public class Evacuation : MonoBehaviour
         if (change == 1)
         {
             // animator 
-            HumanController humanController = gameObject.GetComponent<HumanController>();
             AstarAI.start = 1;
             AstarAI.enabled = true;
             AstarAI.speed = 5;
