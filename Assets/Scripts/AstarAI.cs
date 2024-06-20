@@ -15,6 +15,7 @@ public class AstarAI : MonoBehaviour
     public Evacuation Evacuation;
     public int dangerHappened = 0;
     public float speed = 3.0f;
+    public float movingSpeed = 3.0f;
     public float turnSpeed = 5f;
     public int start = 0;
     public float nextWaypointDistance = 3;
@@ -48,7 +49,9 @@ public class AstarAI : MonoBehaviour
         { 
 
             StartPathFinding();
-            humanController.SetState("Running");
+            movingSpeed = 5;
+            speed = movingSpeed;
+            humanController.SetVelocity(speed);
             Debug.Log(1);
           //  Debug.Log("name:" + transform.name + ":" + humanController.GetState());
 
@@ -170,7 +173,7 @@ public class AstarAI : MonoBehaviour
         }
         else
         {
-            speed = 3.0f;
+            speed = movingSpeed;
         }
         if (Vector3.Distance(transform.position, targetObject.transform.position) < 5)
         {
